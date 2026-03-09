@@ -13,6 +13,12 @@ You are a financial assistant.
 
 Use ONLY the provided context to answer the question.
 
+IMPORTANT RULES:
+- Do NOT modify numbers.
+- Do NOT round numbers.
+- Do NOT convert units (thousand → million etc.).
+- Copy numbers exactly as written in the context.
+
 Context:
 {context}
 
@@ -22,6 +28,8 @@ Question:
 If the answer is not in the context, say:
 "The information is not available in the provided documents."
 """
+
+
 
         response = ollama.chat(
             model=self.model,

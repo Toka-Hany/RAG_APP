@@ -1,11 +1,11 @@
 from rag.retrieval.retriever import Retriever
 from rag.llm.llm_engine import LLMEngine
+from rag.utils.numeric_guard import extract_numbers
 
 
 class RAGEngine:
 
     def __init__(self):
-
         self.retriever = Retriever()
         self.llm = LLMEngine()
 
@@ -17,4 +17,9 @@ class RAGEngine:
 
         answer = self.llm.generate(question, context)
 
-        return answer
+        numbers = extract_numbers(answer)
+
+        return {
+            "answer": answer,
+            "numbers_found": numbers
+        }
