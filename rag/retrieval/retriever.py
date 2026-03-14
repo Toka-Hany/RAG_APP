@@ -11,10 +11,10 @@ class Retriever:
 
     def search(self, query, top_k=5):
 
-        # نحول السؤال إلى embedding
+        
         query_embedding = self.embedding_model.embed([query])[0]
 
-        # نبحث في قاعدة البيانات
+        
         results = self.vector_store.collection.query(
             query_embeddings=[query_embedding],
             n_results=top_k
